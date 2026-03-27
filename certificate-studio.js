@@ -631,6 +631,11 @@ app.get('/:slug', (req, res, next) => {
 
   const recordPath = path.join(RECORDS_DIR, slug, 'data.json');
 
+  console.log('[VERIFY] slug =', slug);
+  console.log('[VERIFY] RECORDS_DIR =', RECORDS_DIR);
+  console.log('[VERIFY] recordPath =', recordPath);
+  console.log('[VERIFY] exists =', fs.existsSync(recordPath));
+
   if (!fs.existsSync(recordPath)) {
     return res.status(404).send('Record Not Found');
   }
@@ -640,25 +645,4 @@ app.get('/:slug', (req, res, next) => {
   }
 
   return res.sendFile(VERIFY_HTML_PATH);
-});
-
-app.use((req, res) => {
-  res.status(404).send('Not Found');
-});
-
-app.listen(PORT, () => {
-  ensureDir(RECORDS_DIR);
-  ensureDir(IMAGES_DIR);
-  ensureDir(ASSETS_DIR);
-
-  if (!fs.existsSync(PENDING_ORDERS_JSON)) {
-    writeJsonPretty(PENDING_ORDERS_JSON, []);
-  }
-
-  if (!fs.existsSync(RECORDS_SOURCE_JSON)) {
-    writeJsonPretty(RECORDS_SOURCE_JSON, []);
-  }
-
-  console.log(`GLAMOPH verify server running at http://localhost:${PORT}`);
-  console.log(`Admin: http://localhost:${PORT}/admin`);
 });
