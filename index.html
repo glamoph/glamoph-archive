@@ -110,30 +110,36 @@
       }
 
       function getIdFromUrl() {
-        const params = new URLSearchParams(window.location.search);
-        const queryId = params.get("id");
-        if (queryId) return queryId.trim();
+  const params = new URLSearchParams(window.location.search);
 
-        const segments = window.location.pathname
-          .split("/")
-          .filter(Boolean)
-          .map(decodeURIComponent);
+  const querySlug = params.get("slug");
+  if (querySlug) return querySlug.trim();
 
-        if (segments.length) {
-          const last = segments[segments.length - 1];
+  const queryId = params.get("id");
+  if (queryId) return queryId.trim();
 
-          if (
-            last &&
-            last !== "index.html" &&
-            last !== "archive" &&
-            !last.endsWith(".html")
-          ) {
-            return last.trim();
-          }
-        }
+  const segments = window.location.pathname
+    .split("/")
+    .filter(Boolean)
+    .map(decodeURIComponent);
 
-        return DEFAULT_ID;
-      }
+  if (segments.length >= 2) {
+    return segments[1].trim();
+  }
+
+  const last = segments[segments.length - 1];
+  if (
+    last &&
+    last !== "index.html" &&
+    last !== "archive" &&
+    last !== "glamoph-archive" &&
+    !last.endsWith(".html")
+  ) {
+    return last.trim();
+  }
+
+  return DEFAULT_ID;
+}
 
       function resolveAssetPath(fileName, id, type = "record") {
   if (!fileName) return "";
