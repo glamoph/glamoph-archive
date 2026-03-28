@@ -141,27 +141,38 @@
   return DEFAULT_ID;
 }
 
-      function resolveAssetPath(fileName, id, type = "record") {
+function resolveAssetPath(fileName, id, type = "record") {
   if (!fileName) return "";
 
-  if (
-    /^(https?:)?\/\//i.test(fileName) ||
-    fileName.startsWith("/") ||
-    fileName.startsWith("./") ||
-    fileName.startsWith("../")
-  ) {
+  // 完全URLはそのまま
+  if (/^(https?:)?\/\//i.test(fileName)) {
     return fileName;
   }
 
+  // プロジェクトベース取得（/glamoph-archive）
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  const projectBase = pathParts.length > 0 ? `/${pathParts[0]}` : "";
+
+  // 先頭 / を強制的に project base に変換
+  if (fileName.startsWith("/")) {
+    return `${projectBase}${fileName}`;
+  }
+
+  // 相対パスそのまま
+  if (fileName.startsWith("./") || fileName.startsWith("../")) {
+    return fileName;
+  }
+
+  // 補完
   if (type === "image") {
-    return `/images/${encodeURIComponent(fileName)}`;
+    return `${projectBase}/images/${encodeURIComponent(fileName)}`;
   }
 
   if (type === "signature") {
-    return `/assets/${encodeURIComponent(fileName)}`;
+    return `${projectBase}/assets/${encodeURIComponent(fileName)}`;
   }
 
-  return `/records/${encodeURIComponent(id)}/${encodeURIComponent(fileName)}`;
+  return `${projectBase}/records/${encodeURIComponent(id)}/${encodeURIComponent(fileName)}`;
 }
 
       function buildRecordRows(data) {
