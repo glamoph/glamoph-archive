@@ -223,9 +223,6 @@
           els.image.alt = "";
         }
 
-        const signatureSrc = resolveAssetPath(data.signature || DEFAULT_SIGNATURE, "signature");
-        els.signature.src = signatureSrc;
-
         els.record.innerHTML = buildRecordRows(data);
 
         els.downloadBtn.onclick = () => {
