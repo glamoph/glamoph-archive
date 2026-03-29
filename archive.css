@@ -125,13 +125,14 @@ button {
 
 .archive-title {
   margin: 0 0 18px;
-  max-width: 8.6ch;
+  max-width: 9.2ch;
   color: var(--ink);
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(48px, 5.2vw, 76px);
   line-height: 0.96;
   font-weight: 300;
   letter-spacing: 0.002em;
+  text-wrap: balance;
 }
 
 .archive-meta-line {
@@ -251,9 +252,13 @@ button {
   word-break: break-word;
 }
 
+.archive-record__row--url dd,
 .archive-record__row--url dd a {
-  border: none !important;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(20, 20, 20, 0.78);
   text-decoration: none !important;
+  border: none !important;
 }
 
 .archive-footer {
@@ -296,7 +301,7 @@ button {
   width: 100%;
   height: auto;
   object-fit: contain;
-   opacity: 1;
+  opacity: 1;
   filter: none;
 }
 
@@ -317,7 +322,7 @@ html.is-printing .archive-download {
 
   .archive-title {
     font-size: clamp(42px, 6vw, 64px);
-    max-width: 9ch;
+    max-width: 10ch;
   }
 }
 
@@ -435,7 +440,7 @@ html.is-printing .archive-download {
     box-shadow: none !important;
     border-radius: 0 !important;
     overflow: hidden;
-	position: relative;
+    position: relative;
   }
 
   .archive-shell {
@@ -462,12 +467,13 @@ html.is-printing .archive-download {
   }
 
   .archive-title {
-    max-width: 8.2ch;
+    max-width: 8.6ch;
     margin: 0 0 3.2mm;
     font-size: 33pt;
     line-height: 0.86;
     font-weight: 300;
     letter-spacing: -0.012em;
+    text-wrap: balance;
   }
 
   .archive-meta-line {
@@ -492,7 +498,7 @@ html.is-printing .archive-download {
   }
 
   .archive-meta-value {
-	font-family: "Courier New", monospace !important;
+    font-family: "Courier New", monospace !important;
     font-size: 9.1pt;
     letter-spacing: 0;
   }
@@ -508,8 +514,6 @@ html.is-printing .archive-download {
   }
 
   .archive-record {
-	max-height: 110mm;
-    overflow: hidden;
     margin-top: 10mm;
     padding-top: 4mm;
     border-top: none;
@@ -543,7 +547,7 @@ html.is-printing .archive-download {
   .archive-record__row {
     grid-template-columns: 28mm minmax(0, 1fr);
     gap: 3.5mm;
-    padding: 3.5mm 0;
+    padding: 3.3mm 0;
     border-bottom: none;
     background-image: linear-gradient(
       to bottom,
@@ -562,16 +566,16 @@ html.is-printing .archive-download {
   }
 
   .archive-record__row dd {
-    font-size: 8.8pt;
-    line-height: 1.5;
+    font-size: 8.6pt;
+    line-height: 1.48;
   }
 
   .archive-record__row--url dd,
   .archive-record__row--url dd a {
-    font-size: 7.8pt;
+    font-size: 7.6pt;
     color: rgba(20, 20, 20, 0.72);
-    border: none !important;
     text-decoration: none !important;
+    border: none !important;
   }
 
   .archive-footer {
@@ -587,7 +591,7 @@ html.is-printing .archive-download {
     display: none !important;
   }
 
- .archive-signature-wrap {
+  .archive-signature-wrap {
     position: absolute;
     right: 12mm;
     bottom: 10mm;
