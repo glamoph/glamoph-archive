@@ -81,7 +81,6 @@
     (function () {
       const DEFAULT_ID = "GLA-AMFW-L-003";
       const RECORDS_DIR = "records";
-      const DEFAULT_SIGNATURE = "assets/signature.png";
 
       const els = {
         verified: document.getElementById("verified"),
@@ -145,28 +144,28 @@
       }
 
       function resolveAssetPath(fileName, type = "generic") {
-        if (!fileName) return "";
+  if (!fileName) return "";
 
-        if (/^(https?:)?\/\//i.test(fileName)) {
-          return fileName;
-        }
+  if (/^(https?:)?\/\//i.test(fileName)) {
+    return fileName;
+  }
 
-        const basePath = getBasePath();
+  const basePath = getBasePath();
 
-        if (fileName.startsWith("/")) {
-          return `${basePath}${fileName}`;
-        }
+  if (fileName.startsWith("/")) {
+    return `${basePath}${fileName}`;
+  }
 
-        if (fileName.startsWith("./") || fileName.startsWith("../")) {
-          return fileName;
-        }
+  if (fileName.startsWith("./") || fileName.startsWith("../")) {
+    return fileName;
+  }
 
-        if (type === "signature") {
-          return `${basePath}/assets/${encodeURIComponent(fileName)}`;
-        }
+  if (type === "signature") {
+    return `${basePath}/assets/${fileName.split("/").pop()}`;
+  }
 
-        return `${basePath}/${fileName}`;
-      }
+  return `${basePath}/${fileName}`;
+}
 
       function buildRecordRows(data) {
         const rows = [
@@ -223,9 +222,6 @@
           els.image.removeAttribute("src");
           els.image.alt = "";
         }
-
-        const signatureSrc = resolveAssetPath(data.signature || DEFAULT_SIGNATURE, "signature");
-        els.signature.src = signatureSrc;
 
         els.record.innerHTML = buildRecordRows(data);
 
@@ -290,4 +286,3 @@
   </script>
 </body>
 </html>
-
