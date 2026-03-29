@@ -161,7 +161,7 @@ button {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.005em;
-  color: var(--ink);
+  color: #666;
 }
 
 .archive-meta-divider {
