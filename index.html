@@ -12,8 +12,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="archive.css?v=4" />
-
+  <link rel="stylesheet" href="archive.css?v=7" />
 </head>
 
 <body>
@@ -21,12 +20,10 @@
     <section class="archive-sheet" aria-label="GLAMOPH archive record">
       <div class="archive-shell">
 
-        <!-- HEADER -->
         <header class="archive-header">
           <p class="archive-status" id="verified">Loading…</p>
         </header>
 
-        <!-- HERO -->
         <section class="archive-hero">
           <div class="archive-hero__content">
             <h1 class="archive-title" id="title">—</h1>
@@ -51,34 +48,30 @@
           </figure>
         </section>
 
-        <!-- RECORD -->
         <section class="archive-record">
           <div class="archive-record__inner">
-
             <div class="archive-record__heading-wrap">
               <h2 class="archive-record__heading">Record</h2>
             </div>
 
             <dl class="archive-record__grid" id="record"></dl>
-
           </div>
         </section>
 
-        <!-- FOOTER -->
-      <footer class="archive-footer">
-  <button class="archive-download" id="downloadBtn" type="button">
-    Download PDF
-  </button>
+        <footer class="archive-footer">
+          <button class="archive-download" id="downloadBtn" type="button">
+            Download PDF
+          </button>
 
-  <div class="archive-signature-wrap">
-    <img
-      class="archive-signature"
-      id="signature"
-      src="assets/signature.png"
-      alt="GLAMOPH signature"
-    />
-  </div>
-</footer>
+          <div class="archive-signature-wrap">
+            <img
+              class="archive-signature"
+              id="signature"
+              src="assets/signature.png"
+              alt="GLAMOPH signature"
+            />
+          </div>
+        </footer>
 
       </div>
     </section>
@@ -88,6 +81,7 @@
     (function () {
       const DEFAULT_ID = "GLA-AMFW-L-003";
       const RECORDS_DIR = "records";
+      const DEFAULT_SIGNATURE = "assets/signature.png";
 
       const els = {
         verified: document.getElementById("verified"),
@@ -109,96 +103,92 @@
           .replace(/'/g, "&#039;");
       }
 
- function getIdFromUrl() {
-  const params = new URLSearchParams(window.location.search);
+      function isProbablyGithubProjectPath() {
+        return /\.github\.io$/i.test(window.location.hostname);
+      }
 
-  const querySlug = params.get("slug");
-  if (querySlug) return querySlug.trim();
+      function getBasePath() {
+        const segments = window.location.pathname.split("/").filter(Boolean);
 
-  const queryId = params.get("id");
-  if (queryId) return queryId.trim();
+        if (isProbablyGithubProjectPath() && segments.length > 0) {
+          return "/" + segments[0];
+        }
 
-  const segments = window.location.pathname
-    .split("/")
-    .filter(Boolean)
-    .map(decodeURIComponent);
+        return "";
+      }
 
-  if (segments.length >= 2) {
-    return segments[1].trim();
-  }
+      function getIdFromUrl() {
+        const params = new URLSearchParams(window.location.search);
 
-  const last = segments[segments.length - 1];
-  if (
-    last &&
-    last !== "index.html" &&
-    last !== "archive" &&
-    last !== "glamoph-archive" &&
-    !last.endsWith(".html")
-  ) {
-    return last.trim();
-  }
+        const querySlug = params.get("slug");
+        if (querySlug) return querySlug.trim();
 
-  return DEFAULT_ID;
-}
+        const queryId = params.get("id");
+        if (queryId) return queryId.trim();
 
-function resolveAssetPath(fileName, id, type = "record") {
-  if (!fileName) return "";
+        const segments = window.location.pathname
+          .split("/")
+          .filter(Boolean)
+          .map(decodeURIComponent);
 
-  // 完全URLはそのまま
-  if (/^(https?:)?\/\//i.test(fileName)) {
-    return fileName;
-  }
+        if (segments.length === 0) {
+          return DEFAULT_ID;
+        }
 
-  // プロジェクトベース取得（/glamoph-archive）
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
-  const projectBase = pathParts.length > 0 ? `/${pathParts[0]}` : "";
+        const last = segments[segments.length - 1];
 
-  // 先頭 / を強制的に project base に変換
-  if (fileName.startsWith("/")) {
-    return `${projectBase}${fileName}`;
-  }
+        if (last && last !== "index.html" && last !== "404.html" && !last.endsWith(".html")) {
+          return last.trim();
+        }
 
-  // 相対パスそのまま
-  if (fileName.startsWith("./") || fileName.startsWith("../")) {
-    return fileName;
-  }
+        return DEFAULT_ID;
+      }
 
-  // 補完
-  if (type === "image") {
-    return `${projectBase}/images/${encodeURIComponent(fileName)}`;
-  }
+      function resolveAssetPath(fileName, type = "generic") {
+        if (!fileName) return "";
 
-  if (type === "signature") {
-    return `${projectBase}/assets/${encodeURIComponent(fileName)}`;
-  }
+        if (/^(https?:)?\/\//i.test(fileName)) {
+          return fileName;
+        }
 
-  return `${projectBase}/records/${encodeURIComponent(id)}/${encodeURIComponent(fileName)}`;
-}
+        const basePath = getBasePath();
+
+        if (fileName.startsWith("/")) {
+          return `${basePath}${fileName}`;
+        }
+
+        if (fileName.startsWith("./") || fileName.startsWith("../")) {
+          return fileName;
+        }
+
+        if (type === "signature") {
+          return `${basePath}/assets/${encodeURIComponent(fileName)}`;
+        }
+
+        return `${basePath}/${fileName}`;
+      }
 
       function buildRecordRows(data) {
         const rows = [
-          { label: "Artist", value: data.artist || "" },
-          { label: "Medium", value: data.medium || "" },
-          { label: "Size", value: data.size || "" },
-          { label: "Frame", value: data.frame || "" },
-          { label: "Archive Date", value: data.archiveDate || "" }
-        ];
-
-        if (data.archiveUrl) {
-          rows.push({
-            label: "Archive URL",
-            value: data.archiveUrl,
-            isUrl: true
-          });
-        }
+          { label: "Artist", value: data.artist },
+          { label: "Medium", value: data.medium },
+          { label: "Size", value: data.size },
+          { label: "Frame", value: data.frame },
+          { label: "Archive Date", value: data.archiveDate },
+          { label: "Archive URL", value: data.archiveUrl, isUrl: true }
+        ].filter((row) => {
+          return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
+        });
 
         return rows.map((row) => {
           if (row.isUrl) {
-            const safeUrl = escapeHtml(row.value);
+            const safeText = escapeHtml(row.value);
+            const href = escapeHtml(row.value);
+
             return `
               <div class="archive-record__row archive-record__row--url">
                 <dt>${escapeHtml(row.label)}</dt>
-                <dd><a href="https://${safeUrl}" target="_blank" rel="noopener noreferrer">${safeUrl}</a></dd>
+                <dd><a href="${href}" target="_blank" rel="noopener noreferrer">${safeText}</a></dd>
               </div>
             `;
           }
@@ -213,28 +203,37 @@ function resolveAssetPath(fileName, id, type = "record") {
       }
 
       function applyData(data, id) {
-        document.title = `GLAMOPH — ${data.title || id}`;
+        const resolvedTitle = data.title || "Untitled";
+        const resolvedArtworkId = data.artworkId || id;
+        const resolvedEdition = data.edition || "—";
+        const resolvedVerified = data.verified || "Artwork Verified";
 
-        els.verified.textContent = data.verified || "Artwork Verified";
-        els.title.textContent = data.title || "Untitled";
-        els.artworkId.textContent = data.artworkId || id;
-        els.edition.textContent = data.edition || "";
+        document.title = `GLAMOPH — ${resolvedTitle}`;
 
-        const imageSrc = resolveAssetPath(data.image || "", id, "image");
-els.image.src = imageSrc;
-els.image.alt = data.title || id;
+        els.verified.textContent = resolvedVerified;
+        els.title.textContent = resolvedTitle;
+        els.artworkId.textContent = resolvedArtworkId;
+        els.edition.textContent = resolvedEdition;
 
-if (data.signature) {
-  els.signature.src = resolveAssetPath(data.signature, id, "signature");
-}
+        const imageSrc = resolveAssetPath(data.image || "");
+        if (imageSrc) {
+          els.image.src = imageSrc;
+          els.image.alt = resolvedTitle;
+        } else {
+          els.image.removeAttribute("src");
+          els.image.alt = "";
+        }
+
+        const signatureSrc = resolveAssetPath(data.signature || DEFAULT_SIGNATURE, "signature");
+        els.signature.src = signatureSrc;
 
         els.record.innerHTML = buildRecordRows(data);
 
-        els.downloadBtn.addEventListener("click", () => {
+        els.downloadBtn.onclick = () => {
           document.documentElement.classList.add("is-printing");
 
           const originalTitle = document.title;
-          document.title = `GLAMOPH-${data.artworkId || id}`;
+          document.title = `GLAMOPH-${resolvedArtworkId}`;
 
           setTimeout(() => {
             window.print();
@@ -244,17 +243,18 @@ if (data.signature) {
               document.documentElement.classList.remove("is-printing");
             }, 300);
           }, 80);
-        }, { once: true });
+        };
       }
 
-      function showError(id) {
-        document.title = `GLAMOPH — Record Not Found`;
+      function showError(id, jsonPath) {
+        document.title = "GLAMOPH — Record Not Found";
         els.verified.textContent = "Record Unavailable";
         els.title.textContent = "Record not found";
         els.artworkId.textContent = id;
         els.edition.textContent = "—";
         els.image.removeAttribute("src");
         els.image.alt = "";
+        els.signature.src = resolveAssetPath(DEFAULT_SIGNATURE, "signature");
 
         els.record.innerHTML = `
           <div class="archive-record__row">
@@ -263,14 +263,15 @@ if (data.signature) {
           </div>
           <div class="archive-record__row">
             <dt>Expected File</dt>
-            <dd>${escapeHtml(`${RECORDS_DIR}/${id}/data.json`)}</dd>
+            <dd>${escapeHtml(jsonPath)}</dd>
           </div>
         `;
       }
 
       async function init() {
         const id = getIdFromUrl();
-        const jsonPath = `${RECORDS_DIR}/${encodeURIComponent(id)}/data.json`;
+        const basePath = getBasePath();
+        const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}.json`;
 
         try {
           const response = await fetch(jsonPath, { cache: "no-store" });
@@ -280,7 +281,7 @@ if (data.signature) {
           applyData(data, id);
         } catch (error) {
           console.error("Archive record load error:", error);
-          showError(id);
+          showError(id, jsonPath);
         }
       }
 
