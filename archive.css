@@ -405,7 +405,7 @@ html.is-printing .archive-download {
 
 @page {
   size: auto;
-  margin: 6mm;
+  margin: 3mm;
 }
 
 @media print {
