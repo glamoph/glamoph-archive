@@ -117,32 +117,36 @@
       }
 
       function getIdFromUrl() {
-        const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
 
-        const querySlug = params.get("slug");
-        if (querySlug) return querySlug.trim();
+  const querySlug = params.get("slug");
+  if (querySlug) return querySlug.trim();
 
-        const queryId = params.get("id");
-        if (queryId) return queryId.trim();
+  const queryId = params.get("id");
+  if (queryId) return queryId.trim();
 
-        const segments = window.location.pathname
-          .split("/")
-          .filter(Boolean)
-          .map(decodeURIComponent);
+  const segments = window.location.pathname
+    .split("/")
+    .filter(Boolean)
+    .map(decodeURIComponent);
 
-        if (segments.length === 0) {
-          return DEFAULT_ID;
-        }
+  if (segments.length === 0) {
+    return null;
+  }
 
-        const last = segments[segments.length - 1];
+  const last = segments[segments.length - 1];
 
-        if (last && last !== "index.html" && last !== "404.html" && !last.endsWith(".html")) {
-          return last.trim();
-        }
+  if (
+    last &&
+    last !== "index.html" &&
+    last !== "404.html" &&
+    !last.endsWith(".html")
+  ) {
+    return last.trim();
+  }
 
-        return DEFAULT_ID;
-      }
-
+  return null;
+}
       function resolveAssetPath(fileName, type = "generic") {
   if (!fileName) return "";
 
