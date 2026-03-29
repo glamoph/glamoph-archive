@@ -145,28 +145,28 @@
       }
 
       function resolveAssetPath(fileName, type = "generic") {
-        if (!fileName) return "";
+  if (!fileName) return "";
 
-        if (/^(https?:)?\/\//i.test(fileName)) {
-          return fileName;
-        }
+  if (/^(https?:)?\/\//i.test(fileName)) {
+    return fileName;
+  }
 
-        const basePath = getBasePath();
+  const basePath = getBasePath();
 
-        if (fileName.startsWith("/")) {
-          return `${basePath}${fileName}`;
-        }
+  if (fileName.startsWith("/")) {
+    return `${basePath}${fileName}`;
+  }
 
-        if (fileName.startsWith("./") || fileName.startsWith("../")) {
-          return fileName;
-        }
+  if (fileName.startsWith("./") || fileName.startsWith("../")) {
+    return fileName;
+  }
 
-        if (type === "signature") {
-          return `${basePath}/assets/${encodeURIComponent(fileName)}`;
-        }
+  if (type === "signature") {
+    return `${basePath}/assets/${fileName.split("/").pop()}`;
+  }
 
-        return `${basePath}/${fileName}`;
-      }
+  return `${basePath}/${fileName}`;
+}
 
       function buildRecordRows(data) {
         const rows = [
