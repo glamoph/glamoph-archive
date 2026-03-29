@@ -123,6 +123,7 @@ button {
 }
 
 .archive-title {
+  font-family: "Cormorant Garamond", serif;
   margin: 0 0 20px;
   max-width: 8.4ch;
   font-size: clamp(50px, 5.1vw, 78px);
