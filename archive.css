@@ -217,10 +217,10 @@ button {
 
 .archive-record__row {
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 18px;
   align-items: start;
-  padding: 12px 0;
+  padding: 11px 0 13px;
   border-bottom: 1px solid var(--line);
 }
 
