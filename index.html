@@ -289,7 +289,7 @@
 
   // ===== 通常（証明書表示）=====
   const basePath = getBasePath();
-  const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}.json`;
+  const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}/data.json`;
 
   try {
     const response = await fetch(jsonPath, { cache: "no-store" });
