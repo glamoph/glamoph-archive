@@ -269,23 +269,41 @@
       }
 
       async function init() {
-        const id = getIdFromUrl();
-        const basePath = getBasePath();
-        const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}.json`;
+  const id = getIdFromUrl();
 
-        try {
-          const response = await fetch(jsonPath, { cache: "no-store" });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  // ===== トップURL時（イントロ表示）=====
+  if (!id) {
+    document.body.innerHTML = `
+      <main class="archive-intro">
+        <div class="archive-intro__inner">
+          <p class="archive-intro__label">GLAMOPH ARCHIVE</p>
+          <h1 class="archive-intro__title">Artwork Verification</h1>
+          <p class="archive-intro__text">
+            Each artwork is individually recorded and verified.
+          </p>
+        </div>
+      </main>
+    `;
+    return;
+  }
 
-          const data = await response.json();
-          applyData(data, id);
-        } catch (error) {
-          console.error("Archive record load error:", error);
-          showError(id, jsonPath);
-        }
-      }
+  // ===== 通常（証明書表示）=====
+  const basePath = getBasePath();
+  const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}.json`;
 
-      init();
+  try {
+    const response = await fetch(jsonPath, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const data = await response.json();
+    applyData(data, id);
+  } catch (error) {
+    console.error("Archive record load error:", error);
+    showError(id, jsonPath);
+  }
+}
+
+init();
     })();
   </script>
 </body>
