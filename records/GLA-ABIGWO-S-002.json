@@ -1,0 +1,22 @@
+{
+  "verified": "Artwork Verified",
+  "title": "A BIG WORLD IN A SMALL TANK",
+  "artworkId": "GLA-ABIGWO-S-002",
+  "edition": "Edition 02 / 50",
+  "artist": "GLAMOPH",
+  "medium": "Archival pigment print on fine art paper",
+  "size": "16 × 20 in (S)",
+  "frame": "Black",
+  "archiveDate": "March 29, 2026",
+  "archiveUrl": "https://verify.glamoph.com/GLA-ABIGWO-S-002",
+  "image": "/images/ABIGWO.jpg",
+  "meta": {
+    "shopifyOrderId": 6093709049940,
+    "orderName": "#1006",
+    "lineItemId": 14493640818772,
+    "sku": "GLAMOPH-ABIGWO-S-BLK",
+    "artworkCode": "ABIGWO",
+    "sizeCode": "S",
+    "editionNo": 2
+  }
+}
