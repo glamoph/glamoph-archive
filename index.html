@@ -12,7 +12,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="archive.css?v=7" />
+  <link rel="stylesheet" href="archive.css?v=8" />
 </head>
 
 <body>
@@ -65,11 +65,11 @@
 
           <div class="archive-signature-wrap">
             <img
-  class="archive-signature"
-  id="signature"
-  src="assets/signature.png"
-  alt="GLAMOPH signature"
-/>
+              class="archive-signature"
+              id="signature"
+              src="assets/signature.png"
+              alt="GLAMOPH signature"
+            />
           </div>
         </footer>
 
@@ -117,99 +117,106 @@
       }
 
       function getIdFromUrl() {
-  const params = new URLSearchParams(window.location.search);
+        const params = new URLSearchParams(window.location.search);
 
-  const querySlug = params.get("slug");
-  if (querySlug) return querySlug.trim();
+        const querySlug = params.get("slug");
+        if (querySlug) return querySlug.trim();
 
-  const queryId = params.get("id");
-  if (queryId) return queryId.trim();
+        const queryId = params.get("id");
+        if (queryId) return queryId.trim();
 
-  const segments = window.location.pathname
-    .split("/")
-    .filter(Boolean)
-    .map(decodeURIComponent);
+        const segments = window.location.pathname
+          .split("/")
+          .filter(Boolean)
+          .map(decodeURIComponent);
 
-  if (segments.length === 0) {
-    return null;
-  }
+        if (segments.length === 0) {
+          return null;
+        }
 
-  const last = segments[segments.length - 1];
+        const last = segments[segments.length - 1];
 
-  if (
-    last &&
-    last !== "index.html" &&
-    last !== "404.html" &&
-    !last.endsWith(".html")
-  ) {
-    return last.trim();
-  }
+        if (
+          last &&
+          last !== "index.html" &&
+          last !== "404.html" &&
+          !last.endsWith(".html")
+        ) {
+          return last.trim();
+        }
 
-  return null;
-}
+        return null;
+      }
+
       function resolveAssetPath(fileName, type = "generic") {
-  if (!fileName) return "";
+        if (!fileName) return "";
 
-  if (/^(https?:)?\/\//i.test(fileName)) {
-    return fileName;
-  }
+        if (/^(https?:)?\/\//i.test(fileName)) {
+          return fileName;
+        }
 
-  const basePath = getBasePath();
+        const basePath = getBasePath();
 
-  if (fileName.startsWith("/")) {
-    return `${basePath}${fileName}`;
-  }
+        if (fileName.startsWith("/")) {
+          return `${basePath}${fileName}`;
+        }
 
-  if (fileName.startsWith("./") || fileName.startsWith("../")) {
-    return fileName;
-  }
+        if (fileName.startsWith("./")) {
+          return `${basePath}/${fileName.replace(/^\.\//, "")}`;
+        }
 
-  if (type === "signature") {
-    return `${basePath}/assets/${fileName.split("/").pop()}`;
-  }
+        if (fileName.startsWith("../")) {
+          return fileName;
+        }
 
-  return `${basePath}/${fileName}`;
-}
+        if (type === "signature") {
+          return `${basePath}/assets/${fileName.split("/").pop()}`;
+        }
+
+        if (type === "image") {
+          return `${basePath}/images/${fileName.split("/").pop()}`;
+        }
+
+        return `${basePath}/${fileName}`;
+      }
 
       function buildRecordRows(data) {
+        const issued = data.createdAt
+          ? new Date(data.createdAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          : "";
+
         const rows = [
-          { label: "Artist", value: data.artist },
-          { label: "Medium", value: data.medium },
-          { label: "Size", value: data.size },
-          { label: "Frame", value: data.frame },
-          { label: "Archive Date", value: data.archiveDate },
-          { label: "Archive URL", value: data.archiveUrl, isUrl: true }
+          { label: "Artwork Code", value: data.artworkCode },
+          { label: "Handle", value: data.handle },
+          { label: "Product Reference", value: data.productId },
+          { label: "Issued", value: issued }
         ].filter((row) => {
           return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
         });
 
-        return rows.map((row) => {
-          if (row.isUrl) {
-            const safeText = escapeHtml(row.value);
-            const href = escapeHtml(row.value);
-
-            return `
-              <div class="archive-record__row archive-record__row--url">
-                <dt>${escapeHtml(row.label)}</dt>
-                <dd><a href="${href}" target="_blank" rel="noopener noreferrer">${safeText}</a></dd>
-              </div>
-            `;
-          }
-
-          return `
-            <div class="archive-record__row">
-              <dt>${escapeHtml(row.label)}</dt>
-              <dd>${escapeHtml(row.value)}</dd>
-            </div>
-          `;
-        }).join("");
+        return rows.map((row) => `
+          <div class="archive-record__row">
+            <dt>${escapeHtml(row.label)}</dt>
+            <dd>${escapeHtml(row.value)}</dd>
+          </div>
+        `).join("");
       }
 
       function applyData(data, id) {
         const resolvedTitle = data.title || "Untitled";
-        const resolvedArtworkId = data.artworkId || id;
-        const resolvedEdition = data.edition || "—";
-        const resolvedVerified = data.verified || "Artwork Verified";
+        const resolvedArtworkId = data.archiveId || data.artworkId || id;
+        const resolvedEdition =
+          data.edition ||
+          (data.editionNumber ? String(data.editionNumber).padStart(3, "0") : "—");
+
+        const resolvedVerified =
+          data.verified === true
+            ? "Artwork Verified"
+            : (data.verified || "Artwork Verified");
 
         document.title = `GLAMOPH — ${resolvedTitle}`;
 
@@ -218,7 +225,7 @@
         els.artworkId.textContent = resolvedArtworkId;
         els.edition.textContent = resolvedEdition;
 
-        const imageSrc = resolveAssetPath(data.image || "");
+        const imageSrc = resolveAssetPath(data.image || "", "image");
         if (imageSrc) {
           els.image.src = imageSrc;
           els.image.alt = resolvedTitle;
@@ -226,6 +233,8 @@
           els.image.removeAttribute("src");
           els.image.alt = "";
         }
+
+        els.signature.src = resolveAssetPath("signature.png", "signature");
 
         els.record.innerHTML = buildRecordRows(data);
 
@@ -254,7 +263,7 @@
         els.edition.textContent = "—";
         els.image.removeAttribute("src");
         els.image.alt = "";
-        els.signature.src = resolveAssetPath(DEFAULT_SIGNATURE, "signature");
+        els.signature.src = resolveAssetPath("signature.png", "signature");
 
         els.record.innerHTML = `
           <div class="archive-record__row">
@@ -269,41 +278,39 @@
       }
 
       async function init() {
-  const id = getIdFromUrl();
+        const id = getIdFromUrl();
 
-  // ===== トップURL時（イントロ表示）=====
-  if (!id) {
-    document.body.innerHTML = `
-      <main class="archive-intro">
-        <div class="archive-intro__inner">
-          <p class="archive-intro__label">GLAMOPH ARCHIVE</p>
-          <h1 class="archive-intro__title">Artwork Verification</h1>
-          <p class="archive-intro__text">
-            Each artwork is individually recorded and verified.
-          </p>
-        </div>
-      </main>
-    `;
-    return;
-  }
+        if (!id) {
+          document.body.innerHTML = `
+            <main class="archive-intro">
+              <div class="archive-intro__inner">
+                <p class="archive-intro__label">GLAMOPH ARCHIVE</p>
+                <h1 class="archive-intro__title">Artwork Verification</h1>
+                <p class="archive-intro__text">
+                  Each artwork is individually recorded and verified.
+                </p>
+              </div>
+            </main>
+          `;
+          return;
+        }
 
-  // ===== 通常（証明書表示）=====
-  const basePath = getBasePath();
-  const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}/data.json`;
+        const basePath = getBasePath();
+        const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}/data.json`;
 
-  try {
-    const response = await fetch(jsonPath, { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        try {
+          const response = await fetch(jsonPath, { cache: "no-store" });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-    const data = await response.json();
-    applyData(data, id);
-  } catch (error) {
-    console.error("Archive record load error:", error);
-    showError(id, jsonPath);
-  }
-}
+          const data = await response.json();
+          applyData(data, id);
+        } catch (error) {
+          console.error("Archive record load error:", error);
+          showError(id, jsonPath);
+        }
+      }
 
-init();
+      init();
     })();
   </script>
 </body>
