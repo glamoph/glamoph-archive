@@ -93,6 +93,8 @@ button {
 }
 
 .archive-shell {
+  max-width: 960px;
+  margin: 0 auto;
   padding: var(--shell-y-top) var(--shell-x) var(--shell-y-bottom);
   background: transparent;
 }
