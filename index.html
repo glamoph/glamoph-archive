@@ -181,30 +181,38 @@
       }
 
       function buildRecordRows(data) {
-        const issued = data.createdAt
-          ? new Date(data.createdAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          : "";
+  const rows = [
+    { label: "Title", value: data.title },
+    { label: "Artist", value: data.artist },
+    { label: "Medium", value: data.medium },
+    { label: "Size", value: data.size },
+    { label: "Archive Date", value: data.archiveDate },
+    { label: "Archive URL", value: data.archiveUrl, isUrl: true }
+  ].filter((row) => {
+    return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
+  });
 
-        const rows = [
-          { label: "Artwork Code", value: data.artworkCode },
-          { label: "Handle", value: data.handle },
-          { label: "Product Reference", value: data.productId },
-          { label: "Issued", value: issued }
-        ].filter((row) => {
-          return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
-        });
+  return rows.map((row) => {
+    if (row.isUrl) {
+      const safeText = escapeHtml(row.value);
+      const href = escapeHtml(row.value);
 
-        return rows.map((row) => `
-          <div class="archive-record__row">
-            <dt>${escapeHtml(row.label)}</dt>
-            <dd>${escapeHtml(row.value)}</dd>
-          </div>
-        `).join("");
-      }
+      return `
+        <div class="archive-record__row archive-record__row--url">
+          <dt>${escapeHtml(row.label)}</dt>
+          <dd><a href="${href}" target="_blank" rel="noopener noreferrer">${safeText}</a></dd>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="archive-record__row">
+        <dt>${escapeHtml(row.label)}</dt>
+        <dd>${escapeHtml(row.value)}</dd>
+      </div>
+    `;
+  }).join("");
+}
 
       function applyData(data, id) {
         const resolvedTitle = data.title || "Untitled";
