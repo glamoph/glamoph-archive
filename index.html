@@ -12,7 +12,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="archive.css?v=8" />
+  <link rel="stylesheet" href="archive.css?v=9" />
 </head>
 
 <body>
@@ -79,7 +79,6 @@
 
   <script>
     (function () {
-      const DEFAULT_ID = "GLA-AMFW-L-003";
       const RECORDS_DIR = "records";
 
       const els = {
@@ -180,48 +179,57 @@
         return `${basePath}/${fileName}`;
       }
 
+      async function resolveRecordPath(id, basePath) {
+        const response = await fetch(`${basePath}/records-log.json`, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const log = await response.json();
+        return log[id] || null;
+      }
+
       function buildRecordRows(data) {
-  const rows = [
-    { label: "Title", value: data.title },
-    { label: "Artist", value: data.artist },
-    { label: "Medium", value: data.medium },
-    { label: "Size", value: data.size },
-    { label: "Archive Date", value: data.archiveDate },
-    { label: "Archive URL", value: data.archiveUrl, isUrl: true }
-  ].filter((row) => {
-    return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
-  });
+        const rows = [
+          { label: "Title", value: data.title },
+          { label: "Artist", value: data.artist },
+          { label: "Medium", value: data.medium },
+          { label: "Size", value: data.size },
+          { label: "Archive Date", value: data.archiveDate },
+          { label: "Archive URL", value: data.archiveUrl, isUrl: true }
+        ].filter((row) => {
+          return row.value !== undefined && row.value !== null && String(row.value).trim() !== "";
+        });
 
-  return rows.map((row) => {
-    if (row.isUrl) {
-      const safeText = escapeHtml(row.value);
-      const href = escapeHtml(row.value);
+        return rows.map((row) => {
+          if (row.isUrl) {
+            const safeText = escapeHtml(row.value);
+            const href = escapeHtml(row.value);
 
-      return `
-        <div class="archive-record__row archive-record__row--url">
-          <dt>${escapeHtml(row.label)}</dt>
-          <dd><a href="${href}" target="_blank" rel="noopener noreferrer">${safeText}</a></dd>
-        </div>
-      `;
-    }
+            return `
+              <div class="archive-record__row archive-record__row--url">
+                <dt>${escapeHtml(row.label)}</dt>
+                <dd><a href="${href}" target="_blank" rel="noopener noreferrer">${safeText}</a></dd>
+              </div>
+            `;
+          }
 
-    return `
-      <div class="archive-record__row">
-        <dt>${escapeHtml(row.label)}</dt>
-        <dd>${escapeHtml(row.value)}</dd>
-      </div>
-    `;
-  }).join("");
-}
+          return `
+            <div class="archive-record__row">
+              <dt>${escapeHtml(row.label)}</dt>
+              <dd>${escapeHtml(row.value)}</dd>
+            </div>
+          `;
+        }).join("");
+      }
 
-      function applyData(data, id) {
-  const resolvedTitle = data.title || "Untitled";
-  const resolvedArtworkId = data.archiveId || data.artworkId || id;
-
-  const resolvedEdition =
-    (data.editionNumber && data.editionTotal)
-      ? `${String(data.editionNumber).padStart(2, "0")} / ${data.editionTotal}`
-      : (data.edition || "—");
+      function applyData(data, publicId) {
+        const resolvedTitle = data.title || "Untitled";
+        const resolvedArtworkId = data.archiveId || publicId;
+        const resolvedEdition =
+          (data.editionNumber && data.editionTotal)
+            ? `${String(data.editionNumber).padStart(2, "0")} / ${data.editionTotal}`
+            : (data.edition || "—");
 
         const resolvedVerified =
           data.verified === true
@@ -245,7 +253,6 @@
         }
 
         els.signature.src = resolveAssetPath("signature.png", "signature");
-
         els.record.innerHTML = buildRecordRows(data);
 
         els.downloadBtn.onclick = () => {
@@ -265,11 +272,11 @@
         };
       }
 
-      function showError(id, jsonPath) {
+      function showError(id, detailText) {
         document.title = "GLAMOPH — Record Not Found";
         els.verified.textContent = "Record Unavailable";
         els.title.textContent = "Record not found";
-        els.artworkId.textContent = id;
+        els.artworkId.textContent = id || "—";
         els.edition.textContent = "—";
         els.image.removeAttribute("src");
         els.image.alt = "";
@@ -281,16 +288,16 @@
             <dd>The requested record could not be loaded.</dd>
           </div>
           <div class="archive-record__row">
-            <dt>Expected File</dt>
-            <dd>${escapeHtml(jsonPath)}</dd>
+            <dt>Details</dt>
+            <dd>${escapeHtml(detailText || "Unknown error")}</dd>
           </div>
         `;
       }
 
       async function init() {
-        const id = getIdFromUrl();
+        const publicId = getIdFromUrl();
 
-        if (!id) {
+        if (!publicId) {
           document.body.innerHTML = `
             <main class="archive-intro">
               <div class="archive-intro__inner">
@@ -306,17 +313,27 @@
         }
 
         const basePath = getBasePath();
-        const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(id)}/data.json`;
 
         try {
+          const internalId = await resolveRecordPath(publicId, basePath);
+
+          if (!internalId) {
+            showError(publicId, `No mapping found in records-log.json for ${publicId}`);
+            return;
+          }
+
+          const jsonPath = `${basePath}/${RECORDS_DIR}/${encodeURIComponent(internalId)}/data.json`;
           const response = await fetch(jsonPath, { cache: "no-store" });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
 
           const data = await response.json();
-          applyData(data, id);
+          applyData(data, publicId);
         } catch (error) {
           console.error("Archive record load error:", error);
-          showError(id, jsonPath);
+          showError(publicId, error.message || "Unknown error");
         }
       }
 
