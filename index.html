@@ -215,11 +215,13 @@
 }
 
       function applyData(data, id) {
-        const resolvedTitle = data.title || "Untitled";
-        const resolvedArtworkId = data.archiveId || data.artworkId || id;
-        const resolvedEdition =
-          data.edition ||
-          (data.editionNumber ? String(data.editionNumber).padStart(3, "0") : "—");
+  const resolvedTitle = data.title || "Untitled";
+  const resolvedArtworkId = data.archiveId || data.artworkId || id;
+
+  const resolvedEdition =
+    (data.editionNumber && data.editionTotal)
+      ? `${String(data.editionNumber).padStart(2, "0")} / ${data.editionTotal}`
+      : (data.edition || "—");
 
         const resolvedVerified =
           data.verified === true
