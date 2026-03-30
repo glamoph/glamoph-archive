@@ -1,18 +1,5 @@
-[
-  {
-    "artworkId": "GLA-ABIGWO-S-001",
-    "shopifyOrderId": 6093690142804,
-    "orderName": "#1005",
-    "lineItemId": 14493601529940,
-    "sku": "GLAMOPH-ABIGWO-S-BLK",
-    "createdAt": "2026-03-29T13:59:00+09:00"
-  },
-  {
-    "artworkId": "GLA-ABIGWO-S-002",
-    "shopifyOrderId": 6093709049940,
-    "orderName": "#1006",
-    "lineItemId": 14493640818772,
-    "sku": "GLAMOPH-ABIGWO-S-BLK",
-    "createdAt": "2026-03-29T14:12:19+09:00"
-  }
-]
+{
+  "GLA-ABWIAST-L-001": "GLA-ABWIAST-L-001",
+  "GLA-ABIGWO-S-001": "GLA-ABIGWO-S-001",
+  "GLA-ABIGWO-S-002": "GLA-ABIGWO-S-002"
+}
