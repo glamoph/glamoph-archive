@@ -19,5 +19,6 @@
   "lineItemId": 14503082131540,
   "sku": "GLAMOPH-THEDUN-L-WHT",
   "createdAt": "2026-04-01T13:46:01+09:00",
-  "updatedAt": "2026-04-01T04:46:08.370Z"
+  "updatedAt": "2026-04-01T04:46:08.370Z",
+  "ownerToken": "test123"
 }
