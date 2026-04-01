@@ -14,5 +14,13 @@
     "orderName": "#1008",
     "sku": "GLAMOPH-ABIGWO-S-BLK",
     "createdAt": "2026-04-01T13:22:06+09:00"
+  },
+  "14503082131540": {
+    "publicId": "GLA-THEDUN-L-001",
+    "internalId": "GLA-THEDUN-L-001-C5J9W8QE",
+    "orderId": 6099213189204,
+    "orderName": "#1009",
+    "sku": "GLAMOPH-THEDUN-L-WHT",
+    "createdAt": "2026-04-01T13:46:01+09:00"
   }
 }
