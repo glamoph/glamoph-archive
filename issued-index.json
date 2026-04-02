@@ -22,5 +22,13 @@
     "orderName": "#1009",
     "sku": "GLAMOPH-THEDUN-L-WHT",
     "createdAt": "2026-04-01T13:46:01+09:00"
+  },
+  "14506377674836": {
+    "publicId": "GLA-CRMDEV-M-002",
+    "internalId": "GLA-CRMDEV-M-002-EJUK6MBU",
+    "orderId": 6101081981012,
+    "orderName": "#1010",
+    "sku": "GLAMOPH-CRMDEV-M-BLK",
+    "createdAt": "2026-04-02T16:12:42+09:00"
   }
 }
