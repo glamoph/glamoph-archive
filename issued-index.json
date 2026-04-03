@@ -30,5 +30,13 @@
     "orderName": "#1014",
     "sku": "GLAMOPH-TNGOPN-S-WHT",
     "createdAt": "2026-04-03T16:37:11+09:00"
+  },
+  "14509681475668": {
+    "publicId": "GLA-WHBLNG-M-001",
+    "internalId": "GLA-WHBLNG-M-001-J2W8LN7K",
+    "orderId": 6103050682452,
+    "orderName": "#1015",
+    "sku": "GLAMOPH-WHBLNG-M-BLK",
+    "createdAt": "2026-04-03T21:43:47+09:00"
   }
 }
