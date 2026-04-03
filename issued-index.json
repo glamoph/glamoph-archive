@@ -6,5 +6,13 @@
     "orderName": "#1011",
     "sku": "GLAMOPH-TFICRK-S-BLK",
     "createdAt": "2026-04-03T14:13:46+09:00"
+  },
+  "14509307953236": {
+    "publicId": "GLA-CNDINN-M-001",
+    "internalId": "GLA-CNDINN-M-001-K8CYA2T4",
+    "orderId": 6102807117908,
+    "orderName": "#1012",
+    "sku": "GLAMOPH-CNDINN-M-WHT",
+    "createdAt": "2026-04-03T15:57:10+09:00"
   }
 }
