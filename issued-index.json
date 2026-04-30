@@ -222,5 +222,13 @@
     "orderName": "#1038",
     "sku": "GLAMOPH-QTPRES-L-WHT",
     "createdAt": "2026-04-30T20:50:45+09:00"
+  },
+  "14579612614740": {
+    "publicId": "GLA-LCTTMP-M-001",
+    "internalId": "GLA-LCTTMP-M-001-5AV4RJVV",
+    "orderId": 6143586140244,
+    "orderName": "#1039",
+    "sku": "GLAMOPH-LCTTMP-M-WHT",
+    "createdAt": "2026-04-30T20:57:12+09:00"
   }
 }
