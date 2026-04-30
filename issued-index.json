@@ -54,5 +54,13 @@
     "orderName": "#1017",
     "sku": "GLAMOPH-ONEWNG-S-BLK",
     "createdAt": "2026-04-30T13:14:40+09:00"
+  },
+  "14579032391764": {
+    "publicId": "GLA-STFRE02-S-001",
+    "internalId": "GLA-STFRE02-S-001-GXAHJF27",
+    "orderId": 6143245484116,
+    "orderName": "#1018",
+    "sku": "GLAMOPH-STFRE02-S-BLK",
+    "createdAt": "2026-04-30T13:37:44+09:00"
   }
 }
