@@ -238,5 +238,13 @@
     "orderName": "#1040",
     "sku": "GLAMOPH-AFTBEC-M-WHT",
     "createdAt": "2026-04-30T21:11:12+09:00"
+  },
+  "14579666452564": {
+    "publicId": "GLA-SCNSKN-M-001",
+    "internalId": "GLA-SCNSKN-M-001-8R8P2VKA",
+    "orderId": 6143616286804,
+    "orderName": "#1041",
+    "sku": "GLAMOPH-SCNSKN-M-WHT",
+    "createdAt": "2026-04-30T21:30:48+09:00"
   }
 }
