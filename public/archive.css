@@ -142,6 +142,13 @@ button {
   font-weight: 400;
 }
 
+archive-meta-edition{
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
 .archive-meta-line {
   display: flex;
   align-items: center;
