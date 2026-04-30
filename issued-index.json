@@ -94,5 +94,13 @@
     "orderName": "#1022",
     "sku": "GLAMOPH-WHSTYS-M-BLK",
     "createdAt": "2026-04-30T15:36:07+09:00"
+  },
+  "14579341295700": {
+    "publicId": "GLA-WRSFEL-M-001",
+    "internalId": "GLA-WRSFEL-M-001-44TTHRMV",
+    "orderId": 6143417483348,
+    "orderName": "#1023",
+    "sku": "GLAMOPH-WRSFEL-M-BLK",
+    "createdAt": "2026-04-30T16:47:06+09:00"
   }
 }
