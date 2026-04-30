@@ -158,5 +158,13 @@
     "orderName": "#1030",
     "sku": "GLAMOPH-HLDSIL-S-BLK",
     "createdAt": "2026-04-30T18:50:07+09:00"
+  },
+  "14579481083988": {
+    "publicId": "GLA-EDBREV-S-001",
+    "internalId": "GLA-EDBREV-S-001-X7LG9H9F",
+    "orderId": 6143501795412,
+    "orderName": "#1031",
+    "sku": "GLAMOPH-EDBREV-S-BLK",
+    "createdAt": "2026-04-30T19:09:44+09:00"
   }
 }
