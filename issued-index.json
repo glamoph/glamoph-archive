@@ -134,5 +134,13 @@
     "orderName": "#1027",
     "sku": "GLAMOPH-MSGTIM-S-BLK",
     "createdAt": "2026-04-30T17:49:47+09:00"
+  },
+  "14579400376404": {
+    "publicId": "GLA-RFLRBN-S-001",
+    "internalId": "GLA-RFLRBN-S-001-D9JX99DP",
+    "orderId": 6143452741716,
+    "orderName": "#1028",
+    "sku": "GLAMOPH-RFLRBN-S-BLK",
+    "createdAt": "2026-04-30T17:59:17+09:00"
   }
 }
