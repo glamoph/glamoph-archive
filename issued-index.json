@@ -86,5 +86,13 @@
     "orderName": "#1021",
     "sku": "GLAMOPH-ATESIL-M-BLK",
     "createdAt": "2026-04-30T15:09:11+09:00"
+  },
+  "14579194495060": {
+    "publicId": "GLA-WHSTYS-M-001",
+    "internalId": "GLA-WHSTYS-M-001-TEPDBFPU",
+    "orderId": 6143343231060,
+    "orderName": "#1022",
+    "sku": "GLAMOPH-WHSTYS-M-BLK",
+    "createdAt": "2026-04-30T15:36:07+09:00"
   }
 }
