@@ -136,36 +136,36 @@ button {
   letter-spacing: 0.002em;
 }
 
-.archive-meta-id {
-  font-family: "Courier New", monospace !important;
-  min-width: 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1.6;
-  color: var(--muted);
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.archive-meta-edition {
-  font-family: "Courier New", monospace !important;
-  min-width: 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1.6;
-  color: var(--muted);
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
 .archive-meta-line {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 14px;
   padding-top: 4px;
+}
+
+.archive-meta-line .archive-meta-id {
+  font-family: "Courier New", monospace !important;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.archive-meta-line .archive-meta-edition {
+  font-family: "Courier New", monospace !important;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .archive-meta-item {
