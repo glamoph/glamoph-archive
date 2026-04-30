@@ -230,5 +230,13 @@
     "orderName": "#1039",
     "sku": "GLAMOPH-LCTTMP-M-WHT",
     "createdAt": "2026-04-30T20:57:12+09:00"
+  },
+  "14579638403156": {
+    "publicId": "GLA-AFTBEC-M-001",
+    "internalId": "GLA-AFTBEC-M-001-UHZBCR8Y",
+    "orderId": 6143599476820,
+    "orderName": "#1040",
+    "sku": "GLAMOPH-AFTBEC-M-WHT",
+    "createdAt": "2026-04-30T21:11:12+09:00"
   }
 }
