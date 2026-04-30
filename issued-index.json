@@ -174,5 +174,13 @@
     "orderName": "#1032",
     "sku": "GLAMOPH-FSTTCH-S-BLK",
     "createdAt": "2026-04-30T19:29:36+09:00"
+  },
+  "14579522273364": {
+    "publicId": "GLA-SHWSHP-S-001",
+    "internalId": "GLA-SHWSHP-S-001-HSC7SG4L",
+    "orderId": 6143531679828,
+    "orderName": "#1033",
+    "sku": "GLAMOPH-SHWSHP-S-BLK",
+    "createdAt": "2026-04-30T19:42:26+09:00"
   }
 }
