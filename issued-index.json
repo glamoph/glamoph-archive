@@ -102,5 +102,13 @@
     "orderName": "#1023",
     "sku": "GLAMOPH-WRSFEL-M-BLK",
     "createdAt": "2026-04-30T16:47:06+09:00"
+  },
+  "14579357483092": {
+    "publicId": "GLA-BYDFRM-S-001",
+    "internalId": "GLA-BYDFRM-S-001-KZVKRWKM",
+    "orderId": 6143427412052,
+    "orderName": "#1024",
+    "sku": "GLAMOPH-BYDFRM-S-BLK",
+    "createdAt": "2026-04-30T17:06:31+09:00"
   }
 }
