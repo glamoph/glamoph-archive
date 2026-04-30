@@ -190,5 +190,13 @@
     "orderName": "#1034",
     "sku": "GLAMOPH-BLSCOL-S-BLK",
     "createdAt": "2026-04-30T19:51:57+09:00"
+  },
+  "14579567394900": {
+    "publicId": "GLA-WHWMEL-S-001",
+    "internalId": "GLA-WHWMEL-S-001-PRGLQC5Y",
+    "orderId": 6143558418516,
+    "orderName": "#1035",
+    "sku": "GLAMOPH-WHWMEL-S-BLK",
+    "createdAt": "2026-04-30T20:19:02+09:00"
   }
 }
