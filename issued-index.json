@@ -118,5 +118,13 @@
     "orderName": "#1025",
     "sku": "GLAMOPH-CSTBLD-S-BLK",
     "createdAt": "2026-04-30T17:18:55+09:00"
+  },
+  "14579375308884": {
+    "publicId": "GLA-BYDTCH-S-001",
+    "internalId": "GLA-BYDTCH-S-001-9CZ7DZSL",
+    "orderId": 6143437668436,
+    "orderName": "#1026",
+    "sku": "GLAMOPH-BYDTCH-S-BLK",
+    "createdAt": "2026-04-30T17:26:58+09:00"
   }
 }
