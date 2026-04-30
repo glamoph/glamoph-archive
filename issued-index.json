@@ -150,5 +150,13 @@
     "orderName": "#1029",
     "sku": "GLAMOPH-VLDMOC-S-BLK",
     "createdAt": "2026-04-30T18:03:04+09:00"
+  },
+  "14579460079700": {
+    "publicId": "GLA-HLDSIL-S-001",
+    "internalId": "GLA-HLDSIL-S-001-GBC4NPTP",
+    "orderId": 6143489310804,
+    "orderName": "#1030",
+    "sku": "GLAMOPH-HLDSIL-S-BLK",
+    "createdAt": "2026-04-30T18:50:07+09:00"
   }
 }
