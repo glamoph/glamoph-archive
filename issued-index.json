@@ -62,5 +62,13 @@
     "orderName": "#1018",
     "sku": "GLAMOPH-STFRE02-S-BLK",
     "createdAt": "2026-04-30T13:37:44+09:00"
+  },
+  "14579096977492": {
+    "publicId": "GLA-INBSLP-S-001",
+    "internalId": "GLA-INBSLP-S-001-4ZNF59HT",
+    "orderId": 6143285755988,
+    "orderName": "#1020",
+    "sku": "GLAMOPH-INBSLP-S-BLK",
+    "createdAt": "2026-04-30T14:16:06+09:00"
   }
 }
