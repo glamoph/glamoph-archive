@@ -70,5 +70,13 @@
     "orderName": "#1020",
     "sku": "GLAMOPH-INBSLP-S-BLK",
     "createdAt": "2026-04-30T14:16:06+09:00"
+  },
+  "14579063259220": {
+    "publicId": "GLA-MSKSIL-S-001",
+    "internalId": "GLA-MSKSIL-S-001-5HTHS9UG",
+    "orderId": 6143262064724,
+    "orderName": "#1019",
+    "sku": "GLAMOPH-MSKSIL-S-BLK",
+    "createdAt": "2026-04-30T13:57:31+09:00"
   }
 }
