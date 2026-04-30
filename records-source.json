@@ -126,5 +126,9 @@
   "SNDNBD-M": {
     "lastEditionNumber": 1,
     "editionTotal": 30
+  },
+  "SNDNBD-L": {
+    "lastEditionNumber": 1,
+    "editionTotal": 10
   }
 }
