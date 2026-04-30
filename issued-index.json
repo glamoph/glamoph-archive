@@ -262,5 +262,13 @@
     "orderName": "#1043",
     "sku": "GLAMOPH-SNDNBD-L-BLK",
     "createdAt": "2026-04-30T22:06:44+09:00"
+  },
+  "14579748634708": {
+    "publicId": "GLA-SNDNBD-L-002",
+    "internalId": "GLA-SNDNBD-L-002-UPFRV62A",
+    "orderId": 6143666880596,
+    "orderName": "#1044",
+    "sku": "GLAMOPH-SNDNBD-L-BLK",
+    "createdAt": "2026-04-30T22:15:00+09:00"
   }
 }
