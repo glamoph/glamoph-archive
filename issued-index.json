@@ -198,5 +198,13 @@
     "orderName": "#1035",
     "sku": "GLAMOPH-WHWMEL-S-BLK",
     "createdAt": "2026-04-30T20:19:02+09:00"
+  },
+  "14579583090772": {
+    "publicId": "GLA-AFTSWT-S-001",
+    "internalId": "GLA-AFTSWT-S-001-NVZ7GEHD",
+    "orderId": 6143568674900,
+    "orderName": "#1036",
+    "sku": "GLAMOPH-AFTSWT-S-BLK",
+    "createdAt": "2026-04-30T20:33:34+09:00"
   }
 }
