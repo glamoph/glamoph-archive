@@ -147,7 +147,7 @@ button {
   word-break: break-word;
 }
 
-archive-meta-edition {
+.archive-meta-edition {
   font-family: "Courier New", monospace !important;
   min-width: 0;
   font-size: 13px;
