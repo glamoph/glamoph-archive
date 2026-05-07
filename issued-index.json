@@ -318,5 +318,13 @@
     "orderName": "#1050",
     "sku": "GLAMOPH-ONEWNG-M-BLK",
     "createdAt": "2026-05-07T18:49:36+09:00"
+  },
+  "14614497689684": {
+    "publicId": "GLA-TWGBLU-S-001",
+    "internalId": "GLA-TWGBLU-S-001-WKLNM64R",
+    "orderId": 6157764395092,
+    "orderName": "#1051",
+    "sku": "GLAMOPH-TWGBLU-S-BLK",
+    "createdAt": "2026-05-07T18:58:23+09:00"
   }
 }
