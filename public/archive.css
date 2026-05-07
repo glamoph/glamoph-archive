@@ -446,17 +446,21 @@ html.is-printing .archive-download {
     margin-top: 34px;
   }
 
-  .archive-record__inner {
-  grid-template-columns: 1fr;
-  gap: 0;
+.archive-record__inner {
+  display: block;
+  width: 100%;
 }
 
 .archive-record__heading-wrap {
-  display: none;
+  display: none !important;
 }
 
 .archive-record__grid {
+  display: block;
   width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
   .archive-record__row {
