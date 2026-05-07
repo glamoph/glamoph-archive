@@ -278,5 +278,13 @@
     "orderName": "#1045",
     "sku": "GLAMOPH-CRMGZE-M-WHT",
     "createdAt": "2026-04-30T23:51:17+09:00"
+  },
+  "14613995028564": {
+    "publicId": "GLA-SCNSKN-L-001",
+    "internalId": "GLA-SCNSKN-L-001-7K4HGUPZ",
+    "orderId": 6157494550612,
+    "orderName": "#1046",
+    "sku": "GLAMOPH-SCNSKN-L-WHT",
+    "createdAt": "2026-05-07T14:15:46+09:00"
   }
 }
