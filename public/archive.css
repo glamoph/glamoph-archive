@@ -154,7 +154,7 @@ button {
   align-items: center;
   flex-wrap: wrap;
   gap: 14px;
-  padding-top: 4px;
+  padding-top: 10px;
 }
 
 .archive-meta-line .archive-meta-id {
