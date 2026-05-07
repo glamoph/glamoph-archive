@@ -302,5 +302,13 @@
     "orderName": "#1048",
     "sku": "GLAMOPH-BYDTCH-L-WHT",
     "createdAt": "2026-05-07T17:54:41+09:00"
+  },
+  "14614439002196": {
+    "publicId": "GLA-BYDFRM-S-002",
+    "internalId": "GLA-BYDFRM-S-002-QHHW4GGM",
+    "orderId": 6157729923156,
+    "orderName": "#1049",
+    "sku": "GLAMOPH-BYDFRM-S-BLK",
+    "createdAt": "2026-05-07T18:19:05+09:00"
   }
 }
