@@ -273,6 +273,7 @@ button {
 .archive-record__row dt,
 .archive-record__row dd {
   margin: 0;
+  min-width: 0;
 }
 
 .archive-record__row dt {
