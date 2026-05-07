@@ -237,12 +237,26 @@ button {
 }
 
 .archive-record__heading-wrap {
-  display: none;
+  display: none !important;
 }
 
 .archive-record__grid {
+  display: block;
   width: 100%;
   max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-record__row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .archive-record__heading {
@@ -255,15 +269,6 @@ button {
   text-transform: uppercase;
 }
 
-
-.archive-record__row {
-  display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  gap: 16px;
-  align-items: start;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-}
 
 .archive-record__row dt,
 .archive-record__row dd {
