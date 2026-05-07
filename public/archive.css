@@ -536,8 +536,10 @@ html.is-printing .archive-download {
   }
 
   .archive-status {
-    font-size: 8.2pt;
-    letter-spacing: 0.14em;
+    font-size: 7.8pt;
+  letter-spacing: 0.16em;
+  font-weight: 400;
+  color: rgba(20, 20, 20, 0.42);
   }
 
   .archive-hero {
@@ -547,7 +549,7 @@ html.is-printing .archive-download {
   }
 
   .archive-title {
-  max-width: 8.8ch;
+   max-width: 8.8ch;
   margin: 0 0 3.2mm;
   font-size: 31pt;
   line-height: 0.88;
