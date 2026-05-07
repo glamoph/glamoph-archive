@@ -648,16 +648,20 @@ html.is-printing .archive-download {
   }
 
  .archive-record__inner {
-  grid-template-columns: 1fr;
-  gap: 0;
+  display: block;
+  width: 100%;
 }
 
 .archive-record__heading-wrap {
-  display: none;
+  display: none !important;
 }
 
 .archive-record__grid {
+  display: block;
   width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
 }
 
   .archive-record__heading {
@@ -666,19 +670,22 @@ html.is-printing .archive-download {
   }
 
   .archive-record__row {
-    grid-template-columns: 28mm minmax(0, 1fr);
-    gap: 3.5mm;
-    padding: 3.3mm 0;
-    border-bottom: none;
-    background-image: linear-gradient(
-      to bottom,
-      transparent calc(100% - 0.6px),
-      rgba(20, 20, 20, 0.04) calc(100% - 0.6px),
-      rgba(20, 20, 20, 0.04) 100%
-    );
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-  }
+  display: grid;
+  grid-template-columns: 28mm minmax(0, 1fr);
+  gap: 3.5mm;
+  width: 100%;
+  min-width: 0;
+  padding: 3.3mm 0;
+  border-bottom: none;
+  background-image: linear-gradient(
+    to bottom,
+    transparent calc(100% - 0.6px),
+    rgba(20, 20, 20, 0.04) calc(100% - 0.6px),
+    rgba(20, 20, 20, 0.04) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
   .archive-record__row dt {
     font-size: 7.1pt;
