@@ -442,9 +442,17 @@ html.is-printing .archive-download {
   }
 
   .archive-record__inner {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.archive-record__heading-wrap {
+  display: none;
+}
+
+.archive-record__grid {
+  width: 100%;
+}
 
   .archive-record__row {
     grid-template-columns: 118px minmax(0, 1fr);
@@ -630,14 +638,18 @@ html.is-printing .archive-download {
     background-position: top left;
   }
 
-  .archive-record__inner {
-    grid-template-columns: 26mm minmax(0, 1fr);
-    gap: 5mm;
-  }
+ .archive-record__inner {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
 
-  .archive-record__heading-wrap {
-    padding-top: 0.5mm;
-  }
+.archive-record__heading-wrap {
+  display: none;
+}
+
+.archive-record__grid {
+  width: 100%;
+}
 
   .archive-record__heading {
     font-size: 7.3pt;
