@@ -232,13 +232,17 @@ button {
 }
 
 .archive-record__inner {
-  display: grid;
-  grid-template-columns: 160px minmax(0, 1fr);
-  gap: var(--record-gap);
+  display: block;
+  width: 100%;
 }
 
 .archive-record__heading-wrap {
-  padding-top: 2px;
+  display: none;
+}
+
+.archive-record__grid {
+  width: 100%;
+  max-width: none;
 }
 
 .archive-record__heading {
@@ -251,10 +255,6 @@ button {
   text-transform: uppercase;
 }
 
-.archive-record__grid {
-  margin: 0;
-  padding: 0;
-}
 
 .archive-record__row {
   display: grid;
