@@ -14,5 +14,13 @@
     "orderName": "#1058",
     "sku": "GLAMOPH-FLRVIL-L-BLK",
     "createdAt": "2026-05-11T17:39:09+09:00"
+  },
+  "14650958250068": {
+    "publicId": "GLA-STFRE01-S-001",
+    "internalId": "GLA-STFRE01-S-001-26RP5X79",
+    "orderId": 6178123513940,
+    "orderName": "#1062",
+    "sku": "GLAMOPH-STFRE01-S-BLK",
+    "createdAt": "2026-05-19T17:28:56+09:00"
   }
 }
