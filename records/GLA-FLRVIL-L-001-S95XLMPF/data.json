@@ -12,7 +12,6 @@
   "frame": "Black",
   "archiveDate": "May 11, 2026",
   "archiveUrl": "https://archive.glamoph.com/records/GLA-FLRVIL-L-001-S95XLMPF/",
-  "ownerArchiveUrl": "https://archive.glamoph.com/records/GLA-FLRVIL-L-001-S95XLMPF/?t=2d92d65248df",
   "image": "/images/FLRVIL.jpg",
   "artworkCode": "FLRVIL",
   "sizeCode": "L",
@@ -22,13 +21,13 @@
   "sku": "GLAMOPH-FLRVIL-L-BLK",
   "createdAt": "2026-05-11T17:39:09+09:00",
   "updatedAt": "2026-05-25T06:38:21.018Z",
-  "ownerToken": "2d92d65248df",
-  "customerEmail": "",
-  "customerFirstName": "",
-  "customerLastName": "",
   "locale": "ja-jp",
   "shippingCountryCode": "JP",
   "billingCountryCode": "JP",
   "permanentArchiveUrl": "https://archive.glamoph.com/records/GLA-FLRVIL-L-001-S95XLMPF/",
-  "pdfUrl": "https://archive.glamoph.com/records/GLA-FLRVIL-L-001-S95XLMPF/certificate.pdf"
+  "pdfUrl": "",
+  "status": "fulfilled",
+  "recordVisibility": "public",
+  "issuedAt": "2026-05-25T06:38:21.018Z",
+  "fulfilledAt": "2026-05-25T06:38:21.018Z"
 }

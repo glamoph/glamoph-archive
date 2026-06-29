@@ -12,7 +12,6 @@
   "frame": "White",
   "archiveDate": "May 11, 2026",
   "archiveUrl": "https://archive.glamoph.com/records/GLA-WHTORG-S-001-BZNKSXMD/",
-  "ownerArchiveUrl": "https://archive.glamoph.com/records/GLA-WHTORG-S-001-BZNKSXMD/?t=bfe966b2f971",
   "image": "/images/WHTORG.jpg",
   "artworkCode": "WHTORG",
   "sizeCode": "S",
@@ -22,13 +21,13 @@
   "sku": "GLAMOPH-WHTORG-S-WHT",
   "createdAt": "2026-05-11T17:39:09+09:00",
   "updatedAt": "2026-05-25T06:39:47.615Z",
-  "ownerToken": "bfe966b2f971",
-  "customerEmail": "",
-  "customerFirstName": "",
-  "customerLastName": "",
   "locale": "ja-jp",
   "shippingCountryCode": "JP",
   "billingCountryCode": "JP",
   "permanentArchiveUrl": "https://archive.glamoph.com/records/GLA-WHTORG-S-001-BZNKSXMD/",
-  "pdfUrl": "https://archive.glamoph.com/records/GLA-WHTORG-S-001-BZNKSXMD/certificate.pdf"
+  "pdfUrl": "",
+  "status": "fulfilled",
+  "recordVisibility": "public",
+  "issuedAt": "2026-05-25T06:39:47.615Z",
+  "fulfilledAt": "2026-05-25T06:39:47.615Z"
 }
